@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\articles;
 
+
 class articlesController extends Controller
 {
   public function insertform()
@@ -23,11 +24,25 @@ class articlesController extends Controller
     DB::table('articles')->insert($data);
     echo "Record inserted successfully.<br/>";
   }
+  public function validation(Request $request)
+{
+    $validatedData = $request->validate([
+        'title' => 'required|max:255',
+        'post' => 'required',
+    ]);
+}
   public function index()
   {
     $users = DB::select('select * from articles');
     return view('result',['users'=>$users]);
   }
+
+  public function records()
+  {
+    $users = DB::select('select * from articles');
+    return view('articles',['users'=>$users]);
+  }
+
   public function show($title)
   {
     $users = DB::select('select * from articles where title = ?',[$title]);
