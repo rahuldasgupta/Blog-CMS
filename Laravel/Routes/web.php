@@ -16,6 +16,10 @@ Route::get('/', function () {
 Route::get('insert','articlesController@insertform');
 Route::post('create','articlesController@insert');
 Route::get('edit-records','articlesController@index');
+Route::get('articles','articlesController@records');
+Route::get('/home', function () {
+    return view('home');
+});
 Route::get('edit/{title}','articlesController@show');
 Route::post('edit/{title}','articlesController@edit');
 Route::get('delete-records','articlesController@index');
