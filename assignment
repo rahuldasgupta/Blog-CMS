@@ -1,0 +1,6 @@
+<php
+$var=$_POST['search'];
+foreach($var as $sr)
+if($sr==$keywords)
+ echo('found results');
+!>
